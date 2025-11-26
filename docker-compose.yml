@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  wehrmacht-app:
+    image: keremmert/wehrmachtencyclopedia:v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - wehrmacht-data:/app/data
+    environment:
+      - PORT=8080
+      - DB_PATH=/app/data/wehrmacht.db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/api/generals"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  wehrmacht-data:
+    driver: local

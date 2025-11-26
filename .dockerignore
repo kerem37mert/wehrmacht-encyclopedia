@@ -1,0 +1,29 @@
+# Wehrmacht Encyclopedia
+node_modules/
+npm-debug.log
+dist/
+build/
+
+# Backend
+*.db
+*.db-journal
+*.log
+server.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Git
+.git/
+.gitignore

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wehrmacht-app
+  labels:
+    app: wehrmacht
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wehrmacht
+  template:
+    metadata:
+      labels:
+        app: wehrmacht
+    spec:
+      containers:
+      - name: wehrmacht
+        image: keremmert/wehrmachtencyclopedia:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+        env:
+        - name: PORT
+          value: "8080"
+        - name: DB_PATH
+          value: "/app/data/wehrmacht.db"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /api/generals
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/generals
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
