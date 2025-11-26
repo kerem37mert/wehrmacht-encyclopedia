@@ -5,7 +5,7 @@ metadata:
   labels:
     app: wehrmacht
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: wehrmacht
   ports:
