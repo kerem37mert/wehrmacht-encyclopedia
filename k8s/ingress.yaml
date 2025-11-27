@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: "traefik"
 spec:
   rules:
-  - host: wehrmacht.34.29.127.41.nip.io
+  - host: heilhitler.34.29.127.41.nip.io
     http:
       paths:
       - path: /
