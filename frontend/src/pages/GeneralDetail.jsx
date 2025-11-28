@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = '/api';
 
 const GeneralDetail = () => {
     const { id } = useParams();
